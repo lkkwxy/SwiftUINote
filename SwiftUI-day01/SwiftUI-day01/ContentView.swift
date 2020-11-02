@@ -35,18 +35,33 @@ struct ContentView: View {
         ]
     ]
     var body: some View {
+//        VStack{
+//            Spacer()
+//            Text("0")
+//                .font(.system(size: 76))
+//                .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
+//                .lineLimit(1)
+//                .minimumScaleFactor(0.5)
+//                .padding(20)
+//            VStack(spacing: 8) {
+//                ForEach(cols, id: \.self) { CalculatorButtonRow(row: $0) }
+//            }.padding(.bottom)
+//        }
         VStack{
-            Spacer()
-            Text("0")
-                .font(.system(size: 76))
-                .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
-                .lineLimit(1)
-                .minimumScaleFactor(0.5)
-                .padding(20)
+            HStack {
+                Spacer()
+                Text("0")
+                    .font(.system(size: 76))
+                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .padding(20)
+            }.frame(minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .bottom)
             VStack(spacing: 8) {
                 ForEach(cols, id: \.self) { CalculatorButtonRow(row: $0) }
             }.padding(.bottom)
         }
+
     }
 }
 
@@ -73,16 +88,27 @@ struct CalculatorButton: View {
     let background: Color
     
     var body: some View {
-        Button(action: {
-            print(Int.random(in: 0...100))
-        }, label: {
-            Text(title)
-                .font(.system(size: 38))
-                .frame(width: size.width, height: size.height)
-                .foregroundColor(.white)
-                .background(background)
-                .cornerRadius(size.height / 2)
-        })
+//        Button(action: {
+//            print(Int.random(in: 0...100))
+//        }, label: {
+//            Text(title)
+//                .font(.system(size: 38))
+//                .frame(width: size.width, height: size.height)
+//                .foregroundColor(.white)
+//                .background(background)
+//                .cornerRadius(size.height / 2)
+//        })
+        ZStack {
+            RoundedRectangle(cornerRadius: size.height / 2)
+                .frame(width: size.width, height: size.height, alignment: .center)
+                .background(Color.clear)
+                .foregroundColor(background)
+            Button(title) {
+
+            }.background(Color.clear)
+            .font(.system(size: 38))
+            .foregroundColor(.white)
+        }
     }
 }
 
