@@ -34,6 +34,7 @@ struct ContentView: View {
          CalculatorButtonItem.op(.equal)
         ]
     ]
+    @EnvironmentObject var model: CalculatorModel
     var body: some View {
 //        VStack{
 //            Spacer()
@@ -50,7 +51,7 @@ struct ContentView: View {
         VStack{
             HStack {
                 Spacer()
-                Text("0")
+                Text(model.brain.output())
                     .font(.system(size: 76))
                     .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
                     .lineLimit(1)
@@ -61,7 +62,6 @@ struct ContentView: View {
                 ForEach(cols, id: \.self) { CalculatorButtonRow(row: $0) }
             }.padding(.bottom)
         }
-
     }
 }
 
@@ -73,10 +73,13 @@ struct ContentView_Previews: PreviewProvider {
 
 struct CalculatorButtonRow: View {
     let row: [CalculatorButtonItem]
+    @EnvironmentObject var model: CalculatorModel
     var body: some View {
         HStack {
             ForEach(row, id: \.self) { (item) -> CalculatorButton in
-                return CalculatorButton(title: item.title, size: item.size, background: item.color)
+                return CalculatorButton(title: item.title, size: item.size, background: item.color) {
+                    self.model.apply(item)
+                }
             }
         }
     }
@@ -86,7 +89,7 @@ struct CalculatorButton: View {
     let title: String
     let size: CGSize
     let background: Color
-    
+    let action: () -> Void
     var body: some View {
 //        Button(action: {
 //            print(Int.random(in: 0...100))
@@ -103,59 +106,11 @@ struct CalculatorButton: View {
                 .frame(width: size.width, height: size.height, alignment: .center)
                 .background(Color.clear)
                 .foregroundColor(background)
-            Button(title) {
-
-            }.background(Color.clear)
-            .font(.system(size: 38))
-            .foregroundColor(.white)
+            Button(title, action: action)
+                .background(Color.clear)
+                .font(.system(size: 38))
+                .foregroundColor(.white)
         }
     }
 }
 
-enum CalculatorButtonItem {
-    enum Op: String {
-        case plus = "+"
-        case minus = "-"
-        case multiply = "×"
-        case divide = "÷"
-        case equal = "="
-    }
-    enum Command: String {
-        case clear = "C"
-        case flip = "+/-"
-        case percent = "%"
-    }
-    case digit(Int)
-    case dot
-    case op(Op)
-    case command(Command)
-}
-
-extension CalculatorButtonItem: Hashable { }
-
-extension CalculatorButtonItem {
-    var title: String {
-        switch self {
-        case .digit(let value): return "\(value)"
-        case .dot: return "."
-        case .op(let op): return op.rawValue
-        case .command(let command): return command.rawValue
-        }
-    }
-    
-    var color: Color {
-        switch self {
-        case .digit, .dot: return Color("digitBackground")
-        case .op: return Color("operatorBackground")
-        case .command: return Color("commandBackground")
-        }
-    }
-    
-    var size: CGSize {
-        if case .digit(let value) = self, value == 0 {
-            return CGSize(width: 180, height: 88)
-        }
-        return CGSize(width: 88, height: 88)
-    }
-    
-}
