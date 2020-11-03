@@ -14,6 +14,7 @@
 		F8AB65D6255024DA005D0EC4 /* CalculateBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB65D5255024DA005D0EC4 /* CalculateBrain.swift */; };
 		F8AB65D925502542005D0EC4 /* CalculatorButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB65D825502542005D0EC4 /* CalculatorButtonItem.swift */; };
 		F8AB65DC25502E7F005D0EC4 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB65DB25502E7F005D0EC4 /* CalculatorModel.swift */; };
+		F8AB65E525512A82005D0EC4 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB65E425512A82005D0EC4 /* HistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		F8AB65D5255024DA005D0EC4 /* CalculateBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateBrain.swift; sourceTree = "<group>"; };
 		F8AB65D825502542005D0EC4 /* CalculatorButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonItem.swift; sourceTree = "<group>"; };
 		F8AB65DB25502E7F005D0EC4 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
+		F8AB65E425512A82005D0EC4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		F8AB65E725512A8F005D0EC4 /* SwiftUI-day01.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SwiftUI-day01.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		F89021BE254FD7CA00984069 /* SwiftUI-day01 */ = {
 			isa = PBXGroup;
 			children = (
+				F8AB65E725512A8F005D0EC4 /* SwiftUI-day01.entitlements */,
 				F89021BF254FD7CA00984069 /* SwiftUI_day01App.swift */,
 				F89021C1254FD7CA00984069 /* ContentView.swift */,
 				F89021C3254FD7CB00984069 /* Assets.xcassets */,
@@ -66,6 +70,7 @@
 				F8AB65D5255024DA005D0EC4 /* CalculateBrain.swift */,
 				F8AB65D825502542005D0EC4 /* CalculatorButtonItem.swift */,
 				F8AB65DB25502E7F005D0EC4 /* CalculatorModel.swift */,
+				F8AB65E425512A82005D0EC4 /* HistoryView.swift */,
 			);
 			path = "SwiftUI-day01";
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8AB65D6255024DA005D0EC4 /* CalculateBrain.swift in Sources */,
+				F8AB65E525512A82005D0EC4 /* HistoryView.swift in Sources */,
 				F8AB65DC25502E7F005D0EC4 /* CalculatorModel.swift in Sources */,
 				F89021C2254FD7CA00984069 /* ContentView.swift in Sources */,
 				F8AB65D925502542005D0EC4 /* CalculatorButtonItem.swift in Sources */,
@@ -279,6 +285,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SwiftUI-day01/SwiftUI-day01.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI-day01/Preview Content\"";
 				DEVELOPMENT_TEAM = 3RW4HWGKHX;
@@ -291,6 +298,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lkk.SwiftUI-day01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -301,6 +309,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "SwiftUI-day01/SwiftUI-day01.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI-day01/Preview Content\"";
 				DEVELOPMENT_TEAM = 3RW4HWGKHX;
@@ -313,6 +322,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lkk.SwiftUI-day01";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

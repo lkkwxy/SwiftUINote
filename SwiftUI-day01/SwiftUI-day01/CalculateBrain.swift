@@ -65,19 +65,19 @@ enum CalculateBrain {
             case .minus, .multiply, .divide, .plus: return .leftOp(left: left, op: op)
             case .equal: return self
             }
-        case .leftOp(let left, let op):
+        case .leftOp(let left, let curOp):
             switch op {
             case .minus, .multiply, .divide, .plus: return .leftOp(left: left, op: op)
             case .equal:
-                if let result = op.calculator(l: left, r: left) {
+                if let result = curOp.calculator(l: left, r: left) {
                     return .left(result)
                 } else {
                     return .error
                 }
             }
-        case .leftOpRight(let left, let op, let right):
-            if let result = op.calculator(l: left, r: right) {
-                return .left(result)
+        case .leftOpRight(let left, let curOp, let right):
+            if let result = curOp.calculator(l: left, r: right) {
+                return .leftOp(left: result, op: op)
             } else {
                 return .error
             }

@@ -35,33 +35,56 @@ struct ContentView: View {
         ]
     ]
     @EnvironmentObject var model: CalculatorModel
+    @State var editingHistory = false
+    @State var showingResult = false
     var body: some View {
-//        VStack{
-//            Spacer()
-//            Text("0")
-//                .font(.system(size: 76))
-//                .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
-//                .lineLimit(1)
-//                .minimumScaleFactor(0.5)
-//                .padding(20)
-//            VStack(spacing: 8) {
-//                ForEach(cols, id: \.self) { CalculatorButtonRow(row: $0) }
-//            }.padding(.bottom)
-//        }
         VStack{
-            HStack {
-                Spacer()
-                Text(model.brain.output())
-                    .font(.system(size: 76))
-                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .padding(20)
-            }.frame(minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .bottom)
+            Spacer()
+            Button("操作记录\(model.history.count)") {
+                self.editingHistory = true
+            }.sheet(isPresented: self.$editingHistory) {
+                HisrotyView(model: model)
+            }
+
+            Text(model.brain.output())
+                .font(.system(size: 76))
+                .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+                .padding(20)
+                .onTapGesture {
+                    self.showingResult = true
+                }.alert(isPresented: self.$showingResult) { () -> Alert in
+                    let title = Text(model.hostioryDetail)
+                    let message = Text(model.brain.output())
+                    let dismissButton = Alert.Button.default(Text("取消")) {
+                        
+                    }
+                    let primaryButton = Alert.Button.default(Text("复制")) {
+                        UIPasteboard.general.string = model.hostioryDetail + "\n" + model.brain.output()
+                    }
+                    return  Alert(title: title, message: message,primaryButton: primaryButton, secondaryButton: dismissButton)
+                }
+            
+            
             VStack(spacing: 8) {
                 ForEach(cols, id: \.self) { CalculatorButtonRow(row: $0) }
             }.padding(.bottom)
         }
+//        VStack{
+//            HStack {
+//                Spacer()
+//                Text(model.brain.output())
+//                    .font(.system(size: 76))
+//                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .trailing)
+//                    .lineLimit(1)
+//                    .minimumScaleFactor(0.5)
+//                    .padding(20)
+//            }.frame(minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .bottom)
+//            VStack(spacing: 8) {
+//                ForEach(cols, id: \.self) { CalculatorButtonRow(row: $0) }
+//            }.padding(.bottom)
+//        }
     }
 }
 
