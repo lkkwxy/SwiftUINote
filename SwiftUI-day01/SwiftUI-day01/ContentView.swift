@@ -41,6 +41,22 @@ struct ContentView: View {
     var body: some View {
         VStack{
             Spacer()
+//            VStack {
+//                if model.totalCount == 0 {
+//                    Text("没有记录")
+//                } else {
+//                    HStack {
+//                        Text("记录：")
+//                        Text("\(model.hostioryDetail)")
+//                    }
+//                    HStack {
+//                        Text("显示：")
+//                        Text("\(model.brain.output())")
+//                    }
+//                    Slider(value: $model.slidingIndex, in: 0...Float(model.totalCount), step: 1)
+//                }
+//            }.padding()
+
             Button("操作记录\(model.history.count)") {
                 self.editingHistory = true
             }.sheet(isPresented: self.$editingHistory) {

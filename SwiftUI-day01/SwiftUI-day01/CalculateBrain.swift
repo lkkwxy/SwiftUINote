@@ -43,7 +43,14 @@ enum CalculateBrain {
     private func apple(num: Int) -> CalculateBrain {
         switch self {
         case .left(let left): return .left(left.apply(num: num))
-        case .leftOp(let left, let op): return .leftOpRight(left: left, op: op, right: "\(num)")
+        case .leftOp(let left, let op):
+            switch op {
+            case .equal:
+                return .left("\(num)")
+            default:
+                return .leftOpRight(left: left, op: op, right: "\(num)")
+            }
+            
         case .leftOpRight(let left, let op, let right): return .leftOpRight(left: left, op: op, right: right.apply(num: num))
         case .error: return .left("\(num)")
         }

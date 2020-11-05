@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "21141BF2-6C12-4635-B15A-8932E4B0CB0B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62D6C914-9727-4453-89F8-4C39A2799EBD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SwiftUI-day01/CalculateBrain.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "apple(num:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "62D6C914-9727-4453-89F8-4C39A2799EBD - ee1c3b5388760410"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUI_day01.CalculateBrain.(apple in _57F4D75C43216AB1FE6839864D1EBFA7)(num: Swift.Int) -&gt; SwiftUI_day01.CalculateBrain"
+                  moduleName = "SwiftUI-day01"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/likunkun/Documents/GitHub/SwiftUINote/SwiftUI-day01/SwiftUI-day01/CalculateBrain.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "98">
+               </Location>
+               <Location
+                  uuid = "62D6C914-9727-4453-89F8-4C39A2799EBD - ee1c3b5388760410"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftUI_day01.CalculateBrain.(apple in _57F4D75C43216AB1FE6839864D1EBFA7)(num: Swift.Int) -&gt; SwiftUI_day01.CalculateBrain"
+                  moduleName = "SwiftUI-day01"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/likunkun/Documents/GitHub/SwiftUINote/SwiftUI-day01/SwiftUI-day01/CalculateBrain.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "158">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
