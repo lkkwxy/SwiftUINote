@@ -37,13 +37,14 @@ struct ContentView: View {
     @EnvironmentObject var model: CalculatorModel
     @State var editingHistory = false
     @State var showingResult = false
+
     var body: some View {
         VStack{
             Spacer()
             Button("操作记录\(model.history.count)") {
                 self.editingHistory = true
             }.sheet(isPresented: self.$editingHistory) {
-                HisrotyView(model: model)
+                HisrotyView(model: model, isEditing: self.$editingHistory)
             }
 
             Text(model.brain.output())
