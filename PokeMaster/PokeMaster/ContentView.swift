@@ -10,8 +10,14 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-//        PokemonList()
-        PokemonInfoPanel()
+        PokemonList()
+            .overlay(
+                VStack {
+                    Spacer()
+                    PokemonInfoPanel()
+                }.edgesIgnoringSafeArea(.bottom)
+            )
+//
     }
 }
 

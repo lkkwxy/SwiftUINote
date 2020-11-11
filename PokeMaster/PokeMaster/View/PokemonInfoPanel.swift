@@ -9,10 +9,8 @@ import Foundation
 import SwiftUI
 struct PokemonInfoPanel: View {
     let pokemonMode: PokemonViewModel = PokemonViewModel.sample(id: 1)
-    let abilitys : [AbilityViewModel]
-    
-    init() {
-        abilitys = AbilityViewModel.sample(pokemonID: pokemonMode.id)
+    var abilitys : [AbilityViewModel] {
+        return AbilityViewModel.sample(pokemonID: pokemonMode.id)
     }
     
     var topIndicator: some View {
@@ -20,18 +18,37 @@ struct PokemonInfoPanel: View {
             .frame(width: 40, height: 6)
             .opacity(0.2)
     }
+    var pokemonDescripition: some View {
+        Text("\(pokemonMode.descriptionText)")
+            .font(.callout)
+            .foregroundColor(Color(hex: 0x666666))
+            .fixedSize(horizontal: false, vertical: true)
+    }
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
 //            Spacer()
             topIndicator
             Header(pokemonMode: pokemonMode)
+            pokemonDescripition
+            Divider()
+            AbilityList(pokemonMode: pokemonMode, abilitys: abilitys)
         }
+        .padding(
+            EdgeInsets(
+                top: 12,
+                leading: 30,
+                bottom: 30,
+                trailing: 30
+            )
+        )
+        .blurBackground(style: .systemMaterial)
+        .cornerRadius(20)
+        .fixedSize(horizontal: false, vertical: true)
     }
     
 }
 
 extension PokemonInfoPanel {
-    
     struct Header: View {
         let pokemonMode: PokemonViewModel
         var spliteLine: some View {
@@ -98,6 +115,26 @@ extension PokemonInfoPanel {
         
         init(pokemonMode: PokemonViewModel) {
             self.pokemonMode = pokemonMode
+        }
+    }
+    struct AbilityList: View {
+        let pokemonMode: PokemonViewModel
+        let abilitys : [AbilityViewModel]
+        var body: some View {
+            VStack (alignment: .leading, spacing: 12) {
+                Text("技能")
+                    .font(.headline)
+                    .bold()
+                ForEach(abilitys) { ability in
+                    Text(ability.name)
+                        .font(.headline)
+                        .foregroundColor(pokemonMode.color)
+                    Text(ability.descriptionText)
+                        .font(.footnote)
+                        .foregroundColor(Color(hex: 0xAAAAAA))
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }.frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 }
