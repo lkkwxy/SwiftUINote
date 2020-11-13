@@ -10,15 +10,10 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        SettingView()
-//        PokemonList()
-//            .overlay(
-//                VStack {
-//                    Spacer()
-//                    PokemonInfoPanel()
-//                }.edgesIgnoringSafeArea(.bottom)
-//            )
-//
+        TabView {
+            PokemonRootView().tabItem { Text("首页") }.tag(1)
+            SettingRootView().tabItem { Text("设置") }.tag(2)
+        }
     }
 }
 

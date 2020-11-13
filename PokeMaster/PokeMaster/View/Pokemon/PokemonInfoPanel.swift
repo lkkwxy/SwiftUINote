@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 struct PokemonInfoPanel: View {
     let pokemonMode: PokemonViewModel = PokemonViewModel.sample(id: 1)
+    @State var isDark = false
     var abilitys : [AbilityViewModel] {
         return AbilityViewModel.sample(pokemonID: pokemonMode.id)
     }
@@ -26,7 +27,10 @@ struct PokemonInfoPanel: View {
     }
     var body: some View {
         VStack(spacing: 20) {
-//            Spacer()
+            Spacer()
+            Button("切换模式") {
+                self.isDark.toggle()
+            }
             topIndicator
             Header(pokemonMode: pokemonMode)
             pokemonDescripition
@@ -41,7 +45,7 @@ struct PokemonInfoPanel: View {
                 trailing: 30
             )
         )
-        .blurBackground(style: .systemMaterial)
+        .blurBackground(style: isDark ? .systemMaterialDark : .systemMaterial)
         .cornerRadius(20)
         .fixedSize(horizontal: false, vertical: true)
     }
@@ -117,6 +121,7 @@ extension PokemonInfoPanel {
             self.pokemonMode = pokemonMode
         }
     }
+    
     struct AbilityList: View {
         let pokemonMode: PokemonViewModel
         let abilitys : [AbilityViewModel]
@@ -138,13 +143,6 @@ extension PokemonInfoPanel {
         }
     }
 }
-
-
-
-
-
-
-
 
 struct PokemonInfoPanel_Previews: PreviewProvider {
     static var previews: some View {

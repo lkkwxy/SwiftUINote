@@ -9,12 +9,13 @@ import Foundation
 import SwiftUI
 struct PokemonList: View {
     @State var expandingIndex: Int?
+    @State var searchText = ""
     var body: some View {
-//        List(PokemonViewModel.all) { pokenViewModel in
-//            PokemonInfoCell(model: pokenViewModel, expanded: false)
-//        }
         ScrollView {
             LazyVStack {
+                TextField("搜索", text: $searchText)
+                    .frame(height: 40)
+                    .padding(.horizontal, 25)
                 ForEach(PokemonViewModel.all) { pokemon in
                     PokemonInfoCell(model: pokemon, expanded: self.expandingIndex == pokemon.id).padding([.leading,.trailing])
                         .onTapGesture {
